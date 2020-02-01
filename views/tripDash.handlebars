@@ -1,0 +1,303 @@
+<body>
+<div class="container">
+
+    <!--Budget Manager Card -->
+    <div class="card">
+      <div class="card-header">
+        Your Budget Manager
+      </div>
+      <div class="card-body">
+        <h5 class="card-title" id="totalBudgetAmount"> </h5>
+        <div class="card-text" id="breakdownBody"></div>
+        {{!-- <canvas class="mb-2" id="budgetChart"></canvas> --}}
+        <div id="allCategoriesCharts">
+        <div class="row" id="categoriesChartsRow">
+          <div class="col" id="AirfareDiv"> </div>
+          <div class="col" id="TransDiv"></div>
+          <div class="col" id="LodgingDiv"></div>
+         
+          </div>
+          <div class="row" id="categoriesChartsRow2">
+           <div class="col" id="FoodDiv"></div>
+           <div class="col" id="ActivitiesDiv"></div>
+           <div class="col" id="EmergencyDiv"></div>
+           <div class="col" id="MiscDiv"></div>
+           </div>
+        </div>
+          
+        <button type="submit" class="btn btn-success btn-block btn-lg mb-4" id="budgetManager" value="Submit">Set Budget</button>
+        <button type="button" class="btn btn-success btn-block btn-lg mb-4" id="savingsModalshow">Add Savings</button>
+          
+      </div>
+    </div>
+
+    
+
+    <!--Expenses -->
+    <div class="card" id="expenseCard">
+      <div class="card-header">
+        Expenses
+      </div>
+      <div class="card-body">
+        <h5 class="card-title" id="TotalExpenseAmount"></h5>
+        <div class="card-text" id="expenseBody"></div>
+        <button type="submit" class="btn btn-success btn-block btn-lg mb-4" id="addExpense" value="submit">Add Expense</button>
+      </div>
+
+
+    </div>
+
+
+    <!--Budget Manager Modal -->
+    <div id="budgetManagerModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title"><strong>Budget Manager</strong></h5>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <form id="breakdownform">
+              <fieldset>
+                <legend>Desired Budget by Category:</legend>
+
+
+                <div class="form-group">
+                  <label>Airfare</label>
+                  <input type="number" name="airfare" id="airfare" class="form-control prc" required>
+                </div>
+                <div class="form-group">
+                  <label>Transportation</label>
+                  <input type="number" class="form-control prc" name="transportation" id="transportation" required>
+                </div>
+                <div class="form-group">
+                  <label>Lodging</label>
+                  <input type="number" class="form-control prc" name="lodging" id="lodging" required>
+                </div>
+                <div class="form-group">
+                  <label>Food and Drink</label>
+                  <input type="number" class="form-control prc" name="food" id="food" required>
+                </div>
+                <div class="form-group">
+                  <label>Activities</label>
+                  <input type="number" class="form-control prc" name="activities" id="activities" required>
+                </div>
+                <div class="form-group">
+                  <label>Emergency</label>
+                  <input type="number" class="form-control prc" id="emergency" name="emergency" required>
+                </div>
+                <div class="form-group">
+                  <label>Miscellaneous</label>
+                  <input type="number" class="form-control prc" id="misc" name="miscellaneous" required>
+                </div>
+
+
+                <div class="form-group">
+                  <label>Total: </label>
+                  <output  id="result"></output>
+                </div>
+                <div class="form-group">
+                  <h4 id="totalBudget"></h4>
+                </div>
+
+
+
+
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" id="budgetManageSave" value="submit">Save Budget</button>
+        <button type="submit" class="btn btn-primary btn-warning" id="updatebudgetManager" value="Submit">Update Budget Categories</button>
+                  </button>
+
+                </div>
+              </fieldset>
+            </form>
+
+
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+      <!--Budget Tracker Modal -->
+      <div id="budgetTrackerModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+
+              <h5 class="modal-title"><strong>Budget Tracker</strong></h5>
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+
+            <div class="modal-body">
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
+
+             
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!--Expenses Modal -->
+      <div id="ExpensesModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+
+              <h5 class="modal-title"><strong>Your Expenses</strong></h5>
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <form id="expenseForm">
+                <div class="form-group">
+                  <label for="expenseamount">Amount ($)</label>
+                  <input type="number" step="any" min="0" class="form-control" id="expenseamount" placeholder="Dollar Amont">
+                </div>
+                <div class="form-group" id="categories">
+                  <label for="expensedescription">Description</label>
+                  <input type="text" class="form-control" id="expensedescription" placeholder="i.e. Uber Ride">
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="radio" name="categorybutton" value="1">
+                  <label class="form-check-label" value="Airfare">Airfare</label>
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="radio" name="categorybutton" value="2">
+                  <label class="form-check-label" value="Transportation">Transportation</label>
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="radio" name="categorybutton" value="3">
+                  <label class="form-check-label" value="Lodging">Lodging</label>
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="radio" name="categorybutton" value="4">
+                  <label class="form-check-label" value="Food and Drink">Food and Drink</label>
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="radio" name="categorybutton" value="5">
+                  <label class="form-check-label" value="Activities">Activities</label>
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="radio" name="categorybutton" value="6">
+                  <label class="form-check-label" value="Emergency">Emergency</label>
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="radio" name="categorybutton" value="7">
+                  <label class="form-check-label" value="Miscellaneous">Misc.</label>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" id="saveExpense" value="value">Save</button>
+
+                  
+
+                </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+<!--SAVINGS MODAL -->
+    <div id="savingsModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title"><strong>Budget Manager</strong></h5>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <form id="savingsform">
+              <fieldset>
+                <legend>Add Your Savings to a Category:</legend>
+
+                <div class="form-group">
+                  <label>Amount ($)</label>
+                  <input type="number" name="savingsamount" id="savingsamount" class="form-control prc" required>
+                  <br>
+                  
+                  <select id="savingsCategory">
+                      <option id="airfareSavings" value="1">Airfare</option>
+                      <option id="transportationSavings" value="2">Transportation</option>
+                      <option id="lodgingSavings" value="3">Lodging</option>
+                      <option id="foodSavings" value="4">Food and Drink</option>
+                      <option id="activitiesSavings" value="5">Activities</option>
+                      <option id="emergencySavings" value="6">Emergency</option>
+                      <option id="miscSavings"value="7">Miscellaneous</option>
+                </select>
+                </div>
+              
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" id="addSavings" value="submit">Add Savings</button>
+        
+                </div>
+              </fieldset>
+            </form>
+
+
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<div class="text-center m-auto mt-5"id="deleteDiv">
+<button type="button" class="btn btn-danger mt-2" id="deleteTrip">Delete Trip</button>
+</div>
+  </div>
+
+</body>

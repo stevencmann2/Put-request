@@ -1,0 +1,80 @@
+/*Welcome Page*/
+
+.welcome-header {
+    padding: 195px;
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+
+#welcome-page {
+    background: url("/assets/css/images/welcome.jpg");
+    background-size: cover;
+}
+
+#navbar {
+    font-family: 'Comfortaa', cursive;
+}
+
+#welcome-link {
+    color: black;
+}
+
+/*About Page*/
+
+#mission {
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+    padding: 40px 0;
+}
+
+/*Services Page*/
+
+.card-1 {
+    float: left;
+}
+
+.card-3 {
+    float: right;
+}
+
+#services {
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+
+/*Contact Page*/
+
+#contact {
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+
+#contact-form {
+    font-family: 'Comfortaa', cursive;
+}
+
+/*User Dash*/
+
+#user-dash {
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+
+/*My Trips*/
+
+#my-trips {
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+
+#trips-table {
+    margin-left: 25%;
+}
+
+
+
+
+
+
+
+
